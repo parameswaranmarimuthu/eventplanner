@@ -1,10 +1,13 @@
 package com.yelloweclips.eventplanner.resource;
 
+import com.yelloweclips.eventplanner.service.EventPlannerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import com.yelloweclips.eventplanner.model.*;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import javax.ws.rs.*;
 
 /**
  * Created by m655222 on 11/14/2017.
@@ -14,10 +17,24 @@ import javax.ws.rs.Produces;
 @Path("/event")
 public class EventPlannerResource {
 
+    @Autowired
+    private EventPlannerService eventPlannerService;
+
     @GET
     @Produces("application/json")
-    public String getEvent(){
-        return "Welcome !!!";
+    @Path("/{name}")
+    public Event getEvent(@PathParam("name") String name){
+
+        return this.eventPlannerService.findEventByName(name);
+    }
+
+    @POST
+    @Produces("application/json")
+    @Consumes("application/json")
+    public Event create(@RequestBody Event event){
+
+        Event value = this.eventPlannerService.createEvent(event);
+        return value;
     }
 
 }

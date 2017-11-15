@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface MongoEventRepository extends MongoRepository<Event, Long> {
 
-    
+    Event findEventByName(String name);
 
 
 }

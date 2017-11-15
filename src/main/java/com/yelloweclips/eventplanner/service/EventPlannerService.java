@@ -1,8 +1,14 @@
 package com.yelloweclips.eventplanner.service;
 
-/**
- * Created by m655222 on 11/14/2017.
- */
-public class EventPlannerService {
-    
+import com.yelloweclips.eventplanner.model.*;
+
+public interface EventPlannerService {
+
+    public Event findEventByName(String name);
+
+    public Event findEventById(Long id);
+
+    public Event createEvent(Event event);
+
+
 }
