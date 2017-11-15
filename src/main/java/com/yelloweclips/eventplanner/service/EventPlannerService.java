@@ -2,13 +2,19 @@ package com.yelloweclips.eventplanner.service;
 
 import com.yelloweclips.eventplanner.model.*;
 
+import java.util.List;
+
 public interface EventPlannerService {
 
-    public Event findEventByName(String name);
+    Event findEventByName(String name);
 
-    public Event findEventById(Long id);
+    Event findEventById(Long id);
 
-    public Event createEvent(Event event);
+    Event createEvent(Event event);
+
+    List<Event> getEventsForUser(String userName);
+
+    User createUser(User user);
 
 
 }
