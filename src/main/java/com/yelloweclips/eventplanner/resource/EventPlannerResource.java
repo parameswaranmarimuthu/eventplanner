@@ -1,6 +1,8 @@
 package com.yelloweclips.eventplanner.resource;
 
 import com.yelloweclips.eventplanner.service.EventPlannerService;
+
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +20,8 @@ import java.util.List;
 @Path("/event")
 public class EventPlannerResource {
 
+    private Logger logger = Logger.getLogger(EventPlannerService.class);
+
     @Autowired
     private EventPlannerService eventPlannerService;
 
@@ -32,8 +36,12 @@ public class EventPlannerResource {
     @Produces("application/json")
     @Path("/{name}")
     public Event getEvent(@PathParam("name") String name){
-
-        return this.eventPlannerService.findEventByName(name);
+        try {
+            return this.eventPlannerService.findEventByName(name);
+        }catch (Exception e){
+            logger.error("runtime exception in /event/{name} : api", e);
+            return null;
+        }
     }
 
     @POST
