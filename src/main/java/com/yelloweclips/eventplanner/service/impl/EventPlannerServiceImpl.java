@@ -60,7 +60,7 @@ public class EventPlannerServiceImpl implements EventPlannerService {
 
         //Query query1 =  new Query().addCriteria(Criteria.where("participants.id").is(user.getId()));
 
-        return this.eventRepository.find(query,Event.class);
+        return this.eventRepository.findByParticipants(query,Event.class);
 
     }
 }

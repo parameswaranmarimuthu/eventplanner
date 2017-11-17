@@ -1,10 +1,12 @@
 package com.yelloweclips.eventplanner.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Created by m655222 on 11/14/2017.
  */
+@Document(collection = "users")
 public class User {
 
     @Id

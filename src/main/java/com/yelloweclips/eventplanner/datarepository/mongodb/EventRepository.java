@@ -20,7 +20,7 @@ public interface EventRepository extends MongoRepository<Event, Long> {
 
     List<Event> findByOrganizar(User user);
 
-    List<Event> find(Query query, java.lang.Class<Event> event);
+    List<Event> findByParticipants(Query query, java.lang.Class<Event> event);
 
 
 }
